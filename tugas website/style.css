@@ -30,9 +30,6 @@ section:last-of-type {
     border-bottom: none;
 }
 
-/* =================================
-   2. NAVIGASI UTAMA
-   ================================= */
 .header-utama {
     background-color: rgba(24, 24, 24, 0.8);
     backdrop-filter: blur(10px);
@@ -255,8 +252,8 @@ table tr:last-child td {
     transform: scale(0.95);
     opacity: 0.8;
     transition: transform 0.5s ease, opacity 0.5s ease;
-    /* Optimasi untuk animasi scroll stacking */
     will-change: transform, opacity;
+    contain: content;
 }
 
 .slide-panel.is-active {
