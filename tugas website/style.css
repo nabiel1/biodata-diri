@@ -1,0 +1,403 @@
+/* =================================
+   1. PENGATURAN GLOBAL & LATAR BELAKANG
+   ================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #181818; 
+    color: #eee; 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/image1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+main {
+    padding-top: 80px; /* Memberi ruang di bawah navigasi */
+}
+
+section {
+    padding: 80px 20px;
+    border-bottom: 1px solid #333; /* Garis pemisah antar section */
+}
+section:last-of-type {
+    border-bottom: none;
+}
+
+/* =================================
+   2. NAVIGASI UTAMA
+   ================================= */
+.header-utama {
+    background-color: rgba(24, 24, 24, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: fixed; /* Navigasi tetap di atas */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffc107; /* Warna aksen kuning */
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #eee;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffc107; /* Warna aksen kuning saat hover */
+}
+
+/* =================================
+   3. GAYA BAGIAN BERANDA
+   ================================= */
+#beranda {
+    position: relative; 
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content {
+    position: relative; 
+    z-index: 2; 
+}
+
+.background-beranda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Mengubah dari 1 ke -1 agar berada di belakang konten */
+}
+
+.background-beranda img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    filter: brightness(60%); 
+}
+
+#beranda h1 {
+    font-size: 4rem;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+     will-change: transform, opacity;
+}
+
+#beranda .tagline {
+    font-size: 1.8rem; 
+    font-weight: 400; 
+    margin-top: 5px;
+     will-change: transform, opacity;
+}
+
+/* Definisikan animasi keyframe */
+@keyframes fade-and-move-down {
+  to {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+}
+
+/* Terapkan animasi pada container teks di Beranda */
+#beranda .hero-content {
+  /* Jalankan animasi 'fade-and-move-down' */
+  animation: fade-and-move-down linear;
+
+  /* Hubungkan progress animasi dengan posisi scroll halaman */
+  animation-timeline: scroll(root);
+
+  /* Tentukan rentang scroll untuk animasi:
+     Mulai dari awal scroll (0px) dan selesai setelah scroll sejauh 400px. */
+  animation-range: 0px 400px;
+}
+
+/* =================================
+   4. GAYA BAGIAN BIODATA
+   ================================= */
+.container-biodata {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto; 
+    background-color: rgba(30, 30, 30, 0.85); 
+    padding: 60px; 
+    border-radius: 15px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5); 
+    border: 1px solid #333; 
+    position: relative;
+    overflow: hidden;
+}
+
+.header-biodata {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.header-biodata h1 {
+    font-size: 3em;
+    color: #ffc107; 
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.header-line {
+    border: 0;
+    height: 2px;
+    background-color: #ffc107;
+    width: 60%;
+    margin: 10px auto 20px;
+    border-radius: 2px;
+}
+
+.biodata-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    gap: 60px; 
+    padding-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.biodata-details {
+    flex-grow: 1; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 15px 0;
+    font-size: 1.2em;
+    border-bottom: 1px solid #444; 
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: bold;
+    color: #f0f0f0;
+    min-width: 180px;
+    padding-right: 15px;
+}
+
+.separator {
+    width: 20px;
+    text-align: center;
+}
+
+.profile-photo {
+    width: 200px; 
+    height: 200px;
+    flex-shrink: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    border-radius: 50%; 
+    border: 3px solid #ffc107; 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* =================================
+   5. GAYA BAGIAN INSTRUMENTASI (BARU)
+   ================================= */
+#instrumentasi {
+    max-width: 1100px; /* Lebarkan sedikit untuk slide */
+    margin: 0 auto;
+    text-align: center;
+}
+
+#instrumentasi h2 {
+    font-size: 3em;
+    color: #ffc107;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+#instrumentasi > p {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.stacking-slides-container {
+    position: relative;
+}
+
+.slide-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    min-height: 80vh; /* Sedikit lebih pendek agar pas */
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 900px;
+    
+    /* Inti dari animasi */
+    position: sticky;
+    top: 10vh; /* Menempel 10% dari atas */
+    
+    /* Gaya visual disesuaikan dengan tema gelap Anda */
+    background-color: rgba(40, 40, 40, 0.9);
+    border: 1px solid #444;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    margin-bottom: 5vh; 
+    
+    /* Animasi saat aktif */
+    transform: scale(0.95);
+    opacity: 0.8;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.slide-panel.is-active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.slide-image {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.slide-content {
+    text-align: left;
+}
+
+.slide-content h3 {
+    font-size: 2.2rem;
+    color: #ffc107; /* Warna aksen kuning */
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.slide-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* =================================
+   6. FOOTER
+   ================================= */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #111;
+    color: #888;
+}
+
+/* =================================
+   7. RESPONSIVE DESIGN
+   ================================= */
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    #beranda h1 {
+        font-size: 2.5rem;
+    }
+
+    .biodata-content {
+        flex-direction: column; 
+        align-items: center;
+        gap: 40px;
+    }
+
+    .container-biodata {
+        padding: 40px 20px;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    table td {
+        font-size: 1em;
+        padding: 10px 0;
+    }
+
+    /* Penyesuaian slide untuk mobile */
+    .slide-panel {
+        grid-template-columns: 1fr; /* Tumpuk gambar dan teks */
+        padding: 25px;
+        min-height: auto;
+    }
+    .slide-image {
+        height: 30vh; /* Kecilkan tinggi gambar */
+    }
+    .slide-content h3 {
+        font-size: 1.8rem;
+    }
+}
